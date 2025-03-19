@@ -134,5 +134,5 @@ Example implementation files are included:
 ## Author
 
 Akash Debnath <br>
-[GitHub]('https://github.com/akashdebnath-swe') <br>
-[Twitter]('https://x.com/akash_swe') <br>
+[GitHub](https://github.com/akashdebnath-swe) <br>
+[Twitter](https://x.com/akash_swe) <br>
