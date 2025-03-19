@@ -9,7 +9,7 @@ class Log
     private static $instance;
     private $handle;
 
-    private function __construct($filename = 'v3.log', $project_path = 'C:\xampp\htdocs\server5640\akash\Classes\log\v3')
+    private function __construct($filename = 'v4.log', $project_path = 'C:\xampp\htdocs\server5640\akash\Classes\log\v4')
     {
         $project_path = rtrim($project_path, '/\\') . '/';
 
