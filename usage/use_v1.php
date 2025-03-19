@@ -4,14 +4,23 @@ error_reporting(E_ALL);
 ini_set("display_errors", 0);
 
 
+
 /////// logger ////////////
-@include_once './v3/log.php';
-$logger = isset($GLOBALS['logger']) ? $GLOBALS['logger'] : function ($message, $level = 'INFO') {};
+require_once '../v1/log.php';
+
+use Akash\Logging\Log;
+
+$logger = new Log('v1.log');
+$logger->registerErrorHandler();
 /////// logger ////////////
 
 
-$logger("This is an info message.");
-$logger("This is an error message.", "ERROR");
+
+$string = 'this is a error';
+$arr = [1, true, 3.5, 'name', [1, 2], ["1" => 'one']];
+
+$logger->write($arr);
+$logger->write($string, 'ERROR');
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +34,7 @@ $logger("This is an error message.", "ERROR");
 
 <body>
     <main>
-        hello v3
+        hello
     </main>
 </body>
 

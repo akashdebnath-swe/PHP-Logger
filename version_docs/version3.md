@@ -53,3 +53,5 @@ This is an info message.
 [2025-03-19 09:28:19 use_v3.php] [ERROR]:
 This is an error message.
 ```
+
+See an example in [use_v3.php](../usage/use_v3.php)

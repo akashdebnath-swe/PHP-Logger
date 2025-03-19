@@ -5,7 +5,7 @@ ini_set("display_errors", 0);
 
 
 /////// logger ////////////
-@include_once './v4/log.php';
+@include_once '../v4/log.php';
 $logger = isset($GLOBALS['logger']) ? $GLOBALS['logger'] : function ($message, $level = 'INFO') {};
 /////// logger ////////////
 

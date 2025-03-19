@@ -1,6 +1,6 @@
 # PHP Logger
 
-A simple, flexible and powerful logging utility for PHP applications. This project offers four versions with increasingly improved features and ease of use.
+A simple, flexible and powerful logging utility for PHP applications. This project offers five versions with increasingly improved features and ease of use.
 
 ## Overview
 
@@ -8,14 +8,17 @@ PHP Logger provides an easy way to log messages, errors, and debug information i
 
 ## Features
 
--   **Multiple versions**: Four different versions with progressive improvements
+-   **Multiple versions**: Five different versions with progressive improvements
 -   **Flexible logging**: Support for different log levels (INFO, ERROR, WARNING, etc.)
 -   **Data type support**: Log strings, arrays, objects, and other data types
 -   **Error handling**: Automatic PHP error and exception catching
 -   **Singleton pattern**: Easy to use globally in your application
 -   **File-based logging**: All logs are stored in customizable log files
--   **Auto-file naming**: Version 4 automatically creates log files named after the PHP scripts (NEW)
--   **Multiple log files**: Support for multiple log files with proper resource management (NEW)
+-   **Auto-file naming**: Version 4 automatically creates log files named after the PHP scripts
+-   **Multiple log files**: Support for multiple log files with proper resource management
+-   **Log level filtering**: Version 5 adds support for filtering logs by severity level (NEW)
+-   **Custom log levels**: Version 5 allows defining custom application-specific log levels (NEW)
+-   **Environment-aware**: Version 5 automatically adjusts logging behavior based on environment (NEW)
 
 ## Installation
 
@@ -27,7 +30,7 @@ PHP Logger provides an easy way to log messages, errors, and debug information i
 
 2. Include the desired version in your PHP project:
     ```php
-    require_once 'path/to/vX/log.php'; // where X is the version number (1, 2, 3, or 4)
+    require_once 'path/to/vX/log.php'; // where X is the version number (1, 2, 3, 4, or 5)
     ```
 
 ## Usage
@@ -58,7 +61,7 @@ $singletonLogger = Log::getInstance();
 $singletonLogger->write("Reusing the same logger instance.");
 ```
 
-[Detailed documentation for Version 1](version1.md)
+[Detailed documentation for Version 1](version_docs/version1.md)
 
 ### Version 2
 
@@ -75,7 +78,7 @@ $logger->write("This is an info message.");
 $logger->write("This is an error message.", "ERROR");
 ```
 
-[Detailed documentation for Version 2](version2.md)
+[Detailed documentation for Version 2](version_docs/version2.md)
 
 ### Version 3
 
@@ -90,11 +93,11 @@ $logger("This is an info message.");
 $logger("This is an error message.", "ERROR");
 ```
 
-[Detailed documentation for Version 3](version3.md)
+[Detailed documentation for Version 3](version_docs/version3.md)
 
 ### Version 4
 
-The most advanced version with automatic log file naming and multiple file support.
+The more advanced version with automatic log file naming and multiple file support.
 
 ```php
 @include_once './v4/log.php';
@@ -108,7 +111,28 @@ $logger("This is an error message", "ERROR");
 // For example, if this code is in example.php, logs go to example.log
 ```
 
-[Detailed documentation for Version 4](version4.md)
+[Detailed documentation for Version 4](version_docs/version4.md)
+
+### Version 5
+
+The latest version with log level filtering and custom log levels.
+
+```php
+@include_once './v5/log.php';
+$logger = isset($GLOBALS['logger']) ? $GLOBALS['logger'] : function ($message, $level = 'INFO') {};
+
+// Configure environment and log levels
+$logger->setEnvironment('development');
+$logger->setMinLevel('WARNING'); // Only log WARNING and above
+$logger->addCustomLevel('SESSION', 2); // Custom level with WARNING severity
+
+// Standard and custom level logging
+$logger("This is a warning", "WARNING"); // Will be logged
+$logger("This is debug info", "DEBUG");  // Won't be logged (below WARNING)
+$logger("User session", "SESSION");      // Will be logged (same as WARNING)
+```
+
+[Detailed documentation for Version 5](version_docs/version5.md)
 
 ## Versioning Evolution
 
@@ -116,6 +140,7 @@ $logger("This is an error message", "ERROR");
 2. **Version 2**: Global accessibility with `$GLOBALS['logger']`
 3. **Version 3**: Function-like usage with the `__invoke()` magic method
 4. **Version 4**: Smart file naming and multiple log file support
+5. **Version 5**: Log level filtering, custom log levels and environment awareness
 
 ## Log Format
 
@@ -139,6 +164,13 @@ message
 message
 ```
 
+### Version 5
+
+```
+[YYYY-MM-DD H:M:S filename.php] [LEVEL]:
+message
+```
+
 ## Configuration
 
 Each version requires slightly different configuration:
@@ -147,15 +179,22 @@ Each version requires slightly different configuration:
 -   **Version 2**: Configure directly in the v2/log.php file
 -   **Version 3**: Configure directly in the v3/log.php file
 -   **Version 4**: Configure directly in the v4/log.php file
+-   **Version 5**: Configure through API calls after initialization:
+    ```php
+    $logger->setMinLevel('WARNING');
+    $logger->setEnvironment('production');
+    $logger->addCustomLevel('AUDIT', 3);
+    ```
 
 ## Sample Usage Files
 
 Example implementation files are included:
 
--   [use_v1.php](use_v1.php) - Example using Version 1
--   [use_v2.php](use_v2.php) - Example using Version 2
--   [use_v3.php](use_v3.php) - Example using Version 3
--   [use_v4.php](use_v4.php) - Example using Version 4
+-   [use_v1.php](usage/use_v1.php) - Example using Version 1
+-   [use_v2.php](usage/use_v2.php) - Example using Version 2
+-   [use_v3.php](usage/use_v3.php) - Example using Version 3
+-   [use_v4.php](usage/use_v4.php) - Example using Version 4
+-   [use_v5.php](usage/use_v5.php) - Example using Version 5
 
 ## License
 

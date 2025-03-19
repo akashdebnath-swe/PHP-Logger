@@ -111,3 +111,5 @@ $logger([
     "roles" => ["admin", "editor"]
 ], "DEBUG");
 ```
+
+See an example in [use_v4.php](../usage/use_v4.php)

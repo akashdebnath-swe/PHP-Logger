@@ -5,13 +5,13 @@
 In `v1/log.php` you have to define this two $project_path:
 
 _1st_
-![alt text](./assets/1.png)
+![alt text](../assets/1.png)
 
 _2nd_
 
 -   $filename is `main.log` by default if we use Singleton instance.
 
-![alt text](./assets/2.png)
+![alt text](../assets/2.png)
 
 #### A sample code how to use
 
@@ -111,3 +111,5 @@ $singletonLogger->write("Reusing the same logger instance.");
     }
 ?>
 ```
+
+See an example in [use_v1.php](../usage/use_v1.php)
