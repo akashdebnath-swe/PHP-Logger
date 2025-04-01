@@ -1,0 +1,45 @@
+# Logger project specific
+ideas.md
+*.log
+
+# PHP
+vendor/
+composer.lock
+composer.phar
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Temporary files
+*.tmp
+temp/
+
+# Testing
+/phpunit.xml
+.phpunit.result.cache
+/coverage/
+
+# Build artifacts
+/build/
+/dist/ 
